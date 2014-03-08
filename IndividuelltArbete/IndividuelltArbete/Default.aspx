@@ -4,7 +4,7 @@
     <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">
-                <h1><%: Title %>.</h1>
+                <h1><%: "Videohuset" %>.</h1>
                 <h2>Modify this template to jump-start your ASP.NET application.</h2>
             </hgroup>
         </div>
@@ -13,6 +13,8 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h3>heyya</h3>
     
+    <asp:Label ID="DeletedText" runat="server" Text="Raderingen lyckades! Kunden har tagits bort" Visible="false"></asp:Label>
+
     <%-- List View--%>
     <asp:ListView ID="FirstPageListView" runat="server"
         SelectMethod="FirstPageListView_GetData"
@@ -68,7 +70,8 @@
         <EmptyDataTemplate>
             <table>
                 <tr>
-                    <td>Kunden har inte hyrt några filmer
+                    <td>
+                        Det finns inga kunder i databasen
                     </td>
                 </tr>
             </table>

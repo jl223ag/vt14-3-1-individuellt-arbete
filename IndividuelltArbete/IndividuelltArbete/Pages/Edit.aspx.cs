@@ -17,28 +17,50 @@ namespace IndividuelltArbete.Pages
             get { return _service ?? (_service = new Service()); }
         }
 
-        protected int Kundid { get; set; } // egenskap för querystringvärdet
+        protected int? Kundid // egenskap för querystringvärdet
+        {
+            get
+            {
+                return Session["VilkenKund"] as int?; // nullable för att undvika att det krashar
+            }
+            set
+            {
+                Session["VilkenKund"] = value;
+            }
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var id = Request.QueryString["Kundid"]; // hämtar querystringen
+            var id = Request.QueryString["Kundid"]; // hämtar querystrings
+            var edited = Request.QueryString["Edited"];
 
             if (id != null)
             {
                 try
                 {
-                    Kundid = int.Parse(id); // gör om querystringen till int
+                    if (int.Parse(id) != Kundid) // om det inte är samma kund
+                    {
+                        Kundid = int.Parse(id); // gör om querystringen till int
+                    }
                 }
                 catch
                 {
-                    throw new Exception("Kunden finns inte i databasen!");
-                }
+                    ErrorText.Text = String.Format("Kunden med id {0} finns inte i databasen", id);
+                }                
+            }
+
+            if (edited != null) // om något har redigerats
+            {
+                edited = edited.Replace("%", " "); // för att undvika mellanslag i urlen
+                SuccessText.Text = String.Format("{0} har uppdaterats", edited);
+                SuccessText.Visible = true;
             }
         }
 
         public Kund EditKunderListView_GetData()
         {
-            return Service.GetKundById(Kundid); // Hämtar kunden ur databasen
+            return Service.GetKundById((int)Kundid); // Hämtar kunden ur databasen
         }
 
         public void EditKunderListView_DeleteItem(int kundid)
@@ -46,6 +68,7 @@ namespace IndividuelltArbete.Pages
             try
             {
                 Service.DeleteKund(kundid);
+                Response.Redirect("~/Default.aspx?Deleted=true");
             }
             catch
             {
@@ -65,6 +88,7 @@ namespace IndividuelltArbete.Pages
                         if (TryUpdateModel(kund)) // sköter valideringen också
                         {
                             Service.SaveKund(kund);
+                            Response.Redirect(String.Format("~/Pages/Edit.aspx?Edited={0}%{1}", kund.Fnamn, kund.Enamn));
                         }
                     }
                     else
@@ -79,13 +103,11 @@ namespace IndividuelltArbete.Pages
             }
         }
     
-    
-    
     //------------------------------------- uthyrning -----------------------------
 
         public IEnumerable<Uthyrning> KundensUthyrningar_GetData()
         {
-            return Service.GetUthyrningarByKundid(Kundid);
+            return Service.GetUthyrningarByKundid((int)Kundid);
         }
 
         //protected void KundensUthyrningar_InsertItem(Uthyrning uthyrning)
@@ -114,6 +136,7 @@ namespace IndividuelltArbete.Pages
                     if (TryUpdateModel(uthyrning))
                     {
                         Service.SaveUthyrning(uthyrning);
+                        Response.Redirect(String.Format("~/Pages/Edit.aspx?Edited=Uthyrningsuppgifter"));
                     }                     
                 }
                 else

@@ -12,14 +12,20 @@ namespace IndividuelltArbete
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var deletedKund = Request.QueryString["Deleted"];
 
+            // om det finns en querystring och den har värdet true, så har en kund tagits bort
+            if (deletedKund != null && bool.Parse(deletedKund)) 
+            {
+                DeletedText.Visible = true;
+            }
         }
 
-        public IEnumerable<Kund> FirstPageListView_GetData()
+        public IEnumerable<Kund> FirstPageListView_GetData() // hämta kunderna och visa dem i listviewen
         {
             try
-            {
-                Service service = new Service();
+            {                
+                var service = new Service();
                 return service.GetKunder();
             }
             catch(Exception)

@@ -6,6 +6,10 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <h1>hey noob</h1>
 
+    <asp:Label ID="ErrorText" runat="server" Text="" Visible="false"></asp:Label>
+    <asp:Label ID="SuccessText" runat="server" Text="" Visible="false"></asp:Label>
+
+
     <%-- Listview för Kund---------------------------------------------------------%>
     <div id="EditKund">
         <asp:ListView ID="EditKunderListView" runat="server"
@@ -104,7 +108,8 @@
             <EmptyDataTemplate>
                 <table>
                     <tr>
-                        <td>Kunduppgifter finns ej
+                        <td>
+                            Kunduppgifter finns ej
                         </td>
                     </tr>
                 </table>
@@ -213,7 +218,8 @@
             <EmptyDataTemplate>
                 <table>
                     <tr>
-                        <td>Kontaktuppgifter finns ej
+                        <td>
+                            Kunden har inte hyrt några filmer
                         </td>
                     </tr>
                 </table>
