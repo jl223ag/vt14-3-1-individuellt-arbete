@@ -1,4 +1,29 @@
-﻿html {
+﻿#MainContent_HyperLink1, #MainContent_HyperLink2{
+    font-size: 1.3em;
+    border: 1px solid gray;
+    padding: 6px;
+    background-color: #D3DCE0;
+}
+#MainContent_HyperLink1:hover, #MainContent_HyperLink2:hover{
+    background-color: gray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html {
     background-color: #e2e2e2;
     margin: 0;
     padding: 0;
@@ -404,7 +429,7 @@ fieldset {
         border: 1px solid #e2e2e2;
         background: #fff;
         color: #333;
-        font-size: 1.2em;
+        font-size: 1.0em;
         margin: 5px 0 6px 0;
         padding: 5px;
         width: 300px;
@@ -507,6 +532,7 @@ table {
     border-spacing: 0;
     margin-top: 0.75em;
     border: 0 none;
+    margin-bottom: 20px;
 }
 
 th {

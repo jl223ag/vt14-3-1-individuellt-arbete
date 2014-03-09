@@ -25,6 +25,7 @@ namespace IndividuelltArbete.Pages
             {
                 created = created.Replace("%", " "); // snabbvariant av url decoding för att ta bort mellanslag
                 CreatedText.Text = String.Format("Kunden {0} har sparats!", created);
+                CreatedText.Visible = true;
             }
         }
 

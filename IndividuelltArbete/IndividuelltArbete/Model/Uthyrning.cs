@@ -23,7 +23,7 @@ namespace IndividuelltArbete.Model
         public int Filmid { get; set; }
 
         // GETDATE() i databasen om datum inte anges
-        public DateTime Startdatum { get; set; }
+        public DateTime? Startdatum { get; set; }
 
         // beräknas
         public DateTime Slutdatum { get; set; }

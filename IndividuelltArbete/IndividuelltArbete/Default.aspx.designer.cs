@@ -13,13 +13,13 @@ namespace IndividuelltArbete {
     public partial class _Default {
         
         /// <summary>
-        /// DeletedText control.
+        /// Messages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DeletedText;
+        protected global::System.Web.UI.WebControls.Label Messages;
         
         /// <summary>
         /// FirstPageListView control.

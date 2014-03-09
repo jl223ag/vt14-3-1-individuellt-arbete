@@ -2,10 +2,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Videohuset</h1>
+            </hgroup>
+        </div>
+    </section>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:Label ID="CreatedText" runat="server" Text="Label"></asp:Label>
+    <h1>Ny kund</h1>
+
+    <asp:Label ID="CreatedText" runat="server" Text="" Visible="false"></asp:Label>
 
     <asp:PlaceHolder ID="FormDiv" runat="server">
 
@@ -33,5 +42,6 @@
     </asp:PlaceHolder>
 
     <asp:Button ID="SendButton" runat="server" Text="Spara kund" OnClick="SendButton_Click" />
+    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Tillbaka</asp:HyperLink>
 
 </asp:Content>

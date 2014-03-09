@@ -2,9 +2,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Videohuset</h1>
+            </hgroup>
+        </div>
+    </section>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>hey noob</h1>
+    <h1>Redigera kund</h1>
 
     <asp:Label ID="ErrorText" runat="server" Text="" Visible="false"></asp:Label>
     <asp:Label ID="SuccessText" runat="server" Text="" Visible="false"></asp:Label>
@@ -167,7 +174,7 @@
                             DataTextField="Namn"
                             DataValueField="Filmid"
                             SelectedValue="<%# Item.Filmid %>"
-                            Enabled="false"></asp:DropDownList>           
+                            Enabled="false"></asp:DropDownList>     
                     </td>
                     <td>
                         <asp:Label ID="KontakttypLabel" runat="server" Text="<%#: Item.Pris %>"></asp:Label>
@@ -231,6 +238,10 @@
                 </table>
             </EmptyDataTemplate>
         </asp:ListView>
+
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Pages/CreateUthyrning.aspx">Ny Uthyrning</asp:HyperLink>
+        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Default.aspx">Tillbaka</asp:HyperLink>
+
     </div>
 
 </asp:Content>

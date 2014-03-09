@@ -35,7 +35,7 @@ namespace IndividuelltArbete.Pages
             var id = Request.QueryString["Kundid"]; // hämtar querystrings
             var edited = Request.QueryString["Edited"];
 
-            if (id != null)
+            if (id != null) // en querystring för kundid finns
             {
                 try
                 {
@@ -47,6 +47,13 @@ namespace IndividuelltArbete.Pages
                 catch
                 {
                     Page.ModelState.AddModelError(String.Empty, String.Format("Ett fel inträffade vid läsning av kundid nr: {0}", id));
+                }
+            }
+            else // om det inte finns en querystring för kundid
+            {
+                if (Session["VilkenKund"] == null) //.. och sessionen är null så har den löpt ut
+                {
+                    Response.Redirect(String.Format("~/Default.aspx?Message=false"));
                 }
             }
 
@@ -109,22 +116,6 @@ namespace IndividuelltArbete.Pages
         {
             return Service.GetUthyrningarByKundid((int)Kundid);
         }
-
-        //protected void KundensUthyrningar_InsertItem(Uthyrning uthyrning)
-        //{
-        //    if (Page.ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            uthyrning.Kundid = Kundid;
-        //            Service.SaveUthyrning(uthyrning); 
-        //        }
-        //        catch(Exception)
-        //        {
-        //            ModelState.AddModelError(String.Empty, "Det gick inte att spara uthyrningen");
-        //        }
-        //    }
-        //}
 
         public void KundensUthyrningar_UpdateItem(int uthyrningsid)
         {

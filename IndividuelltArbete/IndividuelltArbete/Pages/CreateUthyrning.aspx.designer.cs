@@ -10,43 +10,79 @@
 namespace IndividuelltArbete.Pages {
     
     
-    public partial class WebForm1 {
+    public partial class WebForm3 {
         
         /// <summary>
-        /// ErrorText control.
+        /// KundNamn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrorText;
+        protected global::System.Web.UI.WebControls.Label KundNamn;
         
         /// <summary>
-        /// SuccessText control.
+        /// CreatedText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SuccessText;
+        protected global::System.Web.UI.WebControls.Label CreatedText;
         
         /// <summary>
-        /// EditKunderListView control.
+        /// FormDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView EditKunderListView;
+        protected global::System.Web.UI.WebControls.PlaceHolder FormDiv;
         
         /// <summary>
-        /// KundensUthyrningar control.
+        /// FilmBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView KundensUthyrningar;
+        protected global::System.Web.UI.WebControls.DropDownList FilmBox;
+        
+        /// <summary>
+        /// PrisBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PrisBox;
+        
+        /// <summary>
+        /// StartdatumBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox StartdatumBox;
+        
+        /// <summary>
+        /// DagarBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DagarBox;
+        
+        /// <summary>
+        /// SendButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SendButton;
         
         /// <summary>
         /// HyperLink1 control.
@@ -56,14 +92,5 @@ namespace IndividuelltArbete.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-        
-        /// <summary>
-        /// HyperLink2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
     }
 }

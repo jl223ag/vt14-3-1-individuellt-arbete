@@ -4,16 +4,16 @@
     <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">
-                <h1><%: "Videohuset" %>.</h1>
-                <h2>Modify this template to jump-start your ASP.NET application.</h2>
+                <h1>Videohuset</h1>
             </hgroup>
         </div>
     </section>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h3>heyya</h3>
     
-    <asp:Label ID="DeletedText" runat="server" Text="" Visible="false"></asp:Label>
+    <h1>Videohuset startsida</h1>
+
+    <asp:Label ID="Messages" runat="server" Text="" Visible="false"></asp:Label>
 
     <%-- List View--%>
     <asp:ListView ID="FirstPageListView" runat="server"

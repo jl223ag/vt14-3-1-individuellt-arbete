@@ -12,12 +12,20 @@ namespace IndividuelltArbete
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var deletedKund = Request.QueryString["Deleted"];
+            var message = Request.QueryString["Message"];
 
-            if (deletedKund != null && bool.Parse(deletedKund)) // om det finns en querystring och den har värdet true, så har en kund tagits
+            if (message != null) // om det finns en querystring
             {
-                DeletedText.Text = "Raderingen lyckades! Kunden har tagits bort";
-                DeletedText.Visible = true;
+                if (bool.Parse(message)) //.. och om den har värdet true, så har en kund tagits bort
+                {
+                    Messages.Text = "Raderingen lyckades! Kunden har tagits bort";
+                }
+                else // om false har en session gått ut
+                {
+                    Messages.Text = "Sessionen har gått ut";
+                }
+
+                Messages.Visible = true;
             }
         }
 
