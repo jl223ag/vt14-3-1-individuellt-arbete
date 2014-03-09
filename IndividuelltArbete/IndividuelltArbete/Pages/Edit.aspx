@@ -157,8 +157,17 @@
             <ItemTemplate>
 
                 <tr>
-                    <td>
+                    <%--<td>
                         <asp:Label ID="NummerLabel" runat="server" Text="<%#: Item.Filmid %>"></asp:Label>
+                    </td>--%>
+                    <td>
+                        <asp:DropDownList ID="FilmLabel" runat="server"
+                            ItemType="IndividuelltArbete.Model.Film"
+                            SelectMethod="FilmDDList_GetData"
+                            DataTextField="Namn"
+                            DataValueField="Filmid"
+                            SelectedValue="<%# Item.Filmid %>"
+                            Enabled="false"></asp:DropDownList>           
                     </td>
                     <td>
                         <asp:Label ID="KontakttypLabel" runat="server" Text="<%#: Item.Pris %>"></asp:Label>
@@ -189,10 +198,7 @@
                             SelectMethod="FilmDDList_GetData"
                             DataTextField="Namn"
                             DataValueField="Filmid"
-                            SelectedValue="<%# BindItem.Filmid %>" />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="FilmidBox" runat="server" Text="<%#: BindItem.Filmid %>"></asp:TextBox>
+                            SelectedValue="<%# BindItem.Filmid %>"></asp:DropDownList>
                     </td>
                     <td>
                         <asp:TextBox ID="PrisBox" runat="server" Text="<%#: BindItem.Pris %>"></asp:TextBox>

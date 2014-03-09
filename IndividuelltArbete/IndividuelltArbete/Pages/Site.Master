@@ -60,19 +60,20 @@
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </section>
-                <nav>
-                    <ul id="menu">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
-                </nav>
+                
             </div>
         </div>
     </header>
     <div id="body">
         <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+                        
         <section class="content-wrapper main-content clear-fix">
+            <nav>
+                <ul id="menu">
+                    <li><a runat="server" href="~/Default.aspx">Hem</a></li>
+                    <li><a runat="server" href="~/Pages/CreateKund.aspx">Ny kund</a></li>
+                </ul>
+            </nav>
             <asp:ContentPlaceHolder runat="server" ID="MainContent" />
         </section>
     </div>

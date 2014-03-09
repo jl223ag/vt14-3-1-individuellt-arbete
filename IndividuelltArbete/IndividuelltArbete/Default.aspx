@@ -13,7 +13,7 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h3>heyya</h3>
     
-    <asp:Label ID="DeletedText" runat="server" Text="Raderingen lyckades! Kunden har tagits bort" Visible="false"></asp:Label>
+    <asp:Label ID="DeletedText" runat="server" Text="" Visible="false"></asp:Label>
 
     <%-- List View--%>
     <asp:ListView ID="FirstPageListView" runat="server"

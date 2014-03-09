@@ -14,9 +14,9 @@ namespace IndividuelltArbete
         {
             var deletedKund = Request.QueryString["Deleted"];
 
-            // om det finns en querystring och den har värdet true, så har en kund tagits bort
-            if (deletedKund != null && bool.Parse(deletedKund)) 
+            if (deletedKund != null && bool.Parse(deletedKund)) // om det finns en querystring och den har värdet true, så har en kund tagits
             {
+                DeletedText.Text = "Raderingen lyckades! Kunden har tagits bort";
                 DeletedText.Visible = true;
             }
         }
@@ -30,7 +30,7 @@ namespace IndividuelltArbete
             }
             catch(Exception)
             {
-                ModelState.AddModelError(String.Empty, "Det blev ett fel vid hämtning av kunder");
+                Page.ModelState.AddModelError(String.Empty, "Det blev ett fel vid hämtning av kunder");
                 return null;
             }
         }

@@ -17,7 +17,7 @@ namespace IndividuelltArbete.Pages
             get { return _service ?? (_service = new Service()); }
         }
 
-        protected int? Kundid // egenskap för querystringvärdet
+        protected int? Kundid // sparar querystringvärdet i en sessionsvariabel
         {
             get
             {
@@ -46,13 +46,13 @@ namespace IndividuelltArbete.Pages
                 }
                 catch
                 {
-                    ErrorText.Text = String.Format("Kunden med id {0} finns inte i databasen", id);
-                }                
+                    Page.ModelState.AddModelError(String.Empty, String.Format("Ett fel inträffade vid läsning av kundid nr: {0}", id));
+                }
             }
 
             if (edited != null) // om något har redigerats
             {
-                edited = edited.Replace("%", " "); // för att undvika mellanslag i urlen
+                edited = edited.Replace("%", " "); // för att undvika mellanslag mellan för och efternamn i urlen
                 SuccessText.Text = String.Format("{0} har uppdaterats", edited);
                 SuccessText.Visible = true;
             }
@@ -68,17 +68,17 @@ namespace IndividuelltArbete.Pages
             try
             {
                 Service.DeleteKund(kundid);
-                Response.Redirect("~/Default.aspx?Deleted=true");
+                Response.Redirect("~/Default.aspx?Message=true");
             }
             catch
             {
-                ModelState.AddModelError(String.Empty, "Något blev fel vid borttagning av kunden");
+                Page.ModelState.AddModelError(String.Empty, "Något blev fel vid borttagning av kunden");
             }
         }
 
         public void EditKunderListView_UpdateItem(int kundid) // denna kan förbättras som fan med querystringen istället.. gör senare
         {
-            if (ModelState.IsValid)
+            if (Page.ModelState.IsValid)
             {
                 try
                 {
@@ -93,12 +93,12 @@ namespace IndividuelltArbete.Pages
                     }
                     else
                     {
-                        ModelState.AddModelError(String.Empty, String.Format("Kunden {0} hittades inte", kundid));
+                        Page.ModelState.AddModelError(String.Empty, String.Format("Kunden {0} hittades inte", kundid));
                     }                    
                 }
                 catch(Exception)
                 {
-                    ModelState.AddModelError(String.Empty, "Något blev fel vid uppdatering av kunden");
+                    Page.ModelState.AddModelError(String.Empty, "Något blev fel vid uppdatering av kunden");
                 }
             }
         }
@@ -128,26 +128,29 @@ namespace IndividuelltArbete.Pages
 
         public void KundensUthyrningar_UpdateItem(int uthyrningsid)
         {
-            try
+            if (Page.ModelState.IsValid)
             {
-                var uthyrning = Service.GetUthyrningById(uthyrningsid);
-                if (uthyrning != null)
+                try
                 {
-                    if (TryUpdateModel(uthyrning))
+                    var uthyrning = Service.GetUthyrningById(uthyrningsid);
+                    if (uthyrning != null)
                     {
-                        Service.SaveUthyrning(uthyrning);
-                        Response.Redirect(String.Format("~/Pages/Edit.aspx?Edited=Uthyrningsuppgifter"));
-                    }                     
+                        if (TryUpdateModel(uthyrning))
+                        {
+                            Service.SaveUthyrning(uthyrning);
+                            Response.Redirect(String.Format("~/Pages/Edit.aspx?Edited=Uthyrningsuppgifter"));
+                        }
+                    }
+                    else
+                    {
+                        Page.ModelState.AddModelError(String.Empty, "Uthyrningstillfället hittades inte!");
+                        return;
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    ModelState.AddModelError(String.Empty, "Uthyrningstillfället hittades inte!");
-                    return;   
+                    Page.ModelState.AddModelError(String.Empty, "Det gick inte att uppdatera uthyrningen");
                 }
-            }
-            catch(Exception)
-            {
-                ModelState.AddModelError(String.Empty, "Det gick inte att uppdatera uthyrningen");
             }
         }
 
