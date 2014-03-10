@@ -26,13 +26,15 @@ namespace IndividuelltArbete.Model.DAL
                     {
                         var FilmidIndex = reader.GetOrdinal("Filmid");
                         var NamnIndex = reader.GetOrdinal("Namn");
+                        var KategoriIndex = reader.GetOrdinal("Kategori");
 
                         while (reader.Read())
                         {
                             filmer.Add(new Film
                             {
                                 Filmid = reader.GetInt32(FilmidIndex),
-                                Namn = reader.GetString(NamnIndex)
+                                Namn = reader.GetString(NamnIndex),
+                                Kategori = reader.GetString(KategoriIndex)
                             });
                         }
 

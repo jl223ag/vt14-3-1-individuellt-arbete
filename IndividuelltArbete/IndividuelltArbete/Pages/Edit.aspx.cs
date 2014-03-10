@@ -150,11 +150,34 @@ namespace IndividuelltArbete.Pages
             Service.DeleteUthyrning(uthyrningsid);
         }
 
-        //----------------- kontakttyperna -------------------------------------------------------------
+        //----------------- filmnamn och kategorier -------------------------------------------------------------
 
-        public IEnumerable<Film> FilmDDList_GetData()
+        public IEnumerable<Film> FilmDDList_GetData() // data till dropdownlisten
         {
             return Service.GetFilmer();
+        }
+
+        public void KundensUthyrningar_ItemDataBound(object sender, ListViewItemEventArgs e) // använder ItemDataBound för att binda rätt namn och kategori till Filmid
+        {
+            var filmNamn = e.Item.FindControl("FilmNamnLabel") as Label;
+            var kategori = e.Item.FindControl("KategoriLabel") as Label;
+            
+            if (filmNamn != null && kategori != null)
+            {
+                var kundensFilm = (Uthyrning)e.Item.DataItem;
+
+                var filmer = Service.GetFilmer();
+
+                foreach (var film in filmer) // kolla igenom alla filmer i filmlistan
+                {
+                    if (film.Filmid == kundensFilm.Filmid) // om filmid stämmer överrens med kundens films filmid
+                    {
+                        filmNamn.Text = film.Namn;
+                        kategori.Text = film.Kategori;
+                        return;
+                    }
+                }
+            }
         }
     }
 }

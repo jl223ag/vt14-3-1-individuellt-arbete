@@ -85,8 +85,8 @@
                         <asp:Label ID="OrtLabel" runat="server" Text="<%#: Item.Ort %>"></asp:Label>
                     </td>
                     <td class="command">
-                        <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" OnClientClick='<%# String.Format("return confirm(\"Ta bort {0} {1}?\")", Item.Fnamn, Item.Enamn) %>' CausesValidation="false"></asp:LinkButton>
-                        <asp:LinkButton runat="server" CommandName="Edit" Text="Redigera" CausesValidation="false"></asp:LinkButton>
+                        <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort kund" OnClientClick='<%# String.Format("return confirm(\"Ta bort {0} {1}?\")", Item.Fnamn, Item.Enamn) %>' CausesValidation="false"></asp:LinkButton>
+                        <asp:LinkButton runat="server" CommandName="Edit" Text="Redigera kund" CausesValidation="false"></asp:LinkButton>
                     </td>
                 </tr>
             </ItemTemplate>
@@ -147,14 +147,17 @@
             ItemType="IndividuelltArbete.Model.Uthyrning"
             DataKeyNames="Uthyrningsid"
             UpdateMethod="KundensUthyrningar_UpdateItem"
-            DeleteMethod="KundensUthyrningar_DeleteItem">
-
+            DeleteMethod="KundensUthyrningar_DeleteItem"
+            OnItemDataBound="KundensUthyrningar_ItemDataBound">
             <LayoutTemplate>
 
                 <table>
                     <tr>
                         <th>
                             Film
+                        </th>
+                        <th>
+                            Kategori
                         </th>
                         <th>
                             Pris
@@ -177,20 +180,13 @@
             <%-- Item template--%>
 
             <ItemTemplate>
-
                 <tr>
-                    <%--<td>
-                        <asp:Label ID="NummerLabel" runat="server" Text="<%#: Item.Filmid %>"></asp:Label>
-                    </td>--%>
                     <td>
-                        <asp:DropDownList ID="FilmLabel" runat="server"
-                            ItemType="IndividuelltArbete.Model.Film"
-                            SelectMethod="FilmDDList_GetData"
-                            DataTextField="Namn"
-                            DataValueField="Filmid"
-                            SelectedValue="<%# Item.Filmid %>"
-                            Enabled="false"></asp:DropDownList>     
+                        <asp:Label ID="FilmNamnLabel" runat="server" Text="" />
                     </td>
+                    <td>
+                        <asp:Label ID="KategoriLabel" runat="server" Text="" />
+                    </td>                                           
                     <td>
                         <asp:Label ID="PrisLabel" runat="server" Text="<%#: Item.Pris %>"></asp:Label>
                     </td>
@@ -222,6 +218,9 @@
                             DataValueField="Filmid"
                             SelectedValue="<%# BindItem.Filmid %>"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" CssClass="red" runat="server" ErrorMessage="En film måste vara vald" Display="Dynamic" Text="*" ValidationGroup="EditUthyrningen" ControlToValidate="InsertUthyrningDDList"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>
+                        Väljs automatiskt <%-- filmkategorin --%>
                     </td>
                     <td>
                         <asp:TextBox ID="PrisBox" runat="server" Text="<%#: BindItem.Pris %>"></asp:TextBox>
