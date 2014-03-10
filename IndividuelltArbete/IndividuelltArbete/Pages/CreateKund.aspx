@@ -17,7 +17,7 @@
     <%-- Fel och rättmeddelanden--%>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="red" ValidationGroup="KundInput" />
 
-    <div id="RightMessage" runat="server" visible="false">
+    <div id="RightMessage" runat="server" class="close" visible="false">
         <p id="closeSaveMessage" onclick="remover()">X</p>
         <asp:Label ID="CreatedText" runat="server" Text=""></asp:Label>
     </div>

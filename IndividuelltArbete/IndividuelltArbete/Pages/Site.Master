@@ -85,5 +85,11 @@
         </div>
     </footer>
     </form>
+    <script>
+        function remover() {
+            var close = document.querySelector(".close");
+            close.parentNode.removeChild(close);
+        };
+    </script>
 </body>
 </html>

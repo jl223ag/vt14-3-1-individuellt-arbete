@@ -16,7 +16,7 @@
 
     <%-- Rätt och felmeddelanden --%>
     <asp:Label ID="KundNamn" runat="server" Text=""></asp:Label>
-    <div id="RightMessage" runat="server" visible="false">
+    <div id="RightMessage" runat="server" class="close" visible="false">
         <p id="closeSaveMessage" onclick="remover()">X</p>
         <asp:Label ID="CreatedText" runat="server" Text=""></asp:Label>
     </div>

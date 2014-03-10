@@ -13,8 +13,8 @@
     
     <h1>Videohuset startsida</h1>
 
-    <div id="HomeRightMessage" runat="server" visible="false">
-        <p id="HomecloseSaveMessage" onclick="remover()">X</p>
+    <div id="HomeRightMessage" class="close" runat="server" visible="false"> <%-- javascript stängfunktion.. finns i master--%>
+        <p id="HomecloseSaveMessage"onclick="remover()">X</p>
         <asp:Label ID="Messages" runat="server" Text=""></asp:Label>
     </div>
 

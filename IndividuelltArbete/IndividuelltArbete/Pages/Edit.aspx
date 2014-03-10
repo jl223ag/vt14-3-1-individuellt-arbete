@@ -19,7 +19,7 @@
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="EditKunden" CssClass="red" />
     <asp:ValidationSummary ID="ValidationSummary2" runat="server" ValidationGroup="EditUthyrningen" CssClass="red" />
     
-    <div id="RightMessage" runat="server" visible="false">
+    <div id="RightMessage" runat="server" class="close" visible="false">
         <p id="closeSaveMessage" onclick="remover()">X</p>
         <asp:Label ID="SuccessText" runat="server" Text=""></asp:Label>
     </div>
@@ -85,7 +85,7 @@
                         <asp:Label ID="OrtLabel" runat="server" Text="<%#: Item.Ort %>"></asp:Label>
                     </td>
                     <td class="command">
-                        <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" CausesValidation="false"></asp:LinkButton>
+                        <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" OnClientClick='<%# String.Format("return confirm(\"Ta bort {0} {1}?\")", Item.Fnamn, Item.Enamn) %>' CausesValidation="false"></asp:LinkButton>
                         <asp:LinkButton runat="server" CommandName="Edit" Text="Redigera" CausesValidation="false"></asp:LinkButton>
                     </td>
                 </tr>
@@ -204,7 +204,7 @@
                         <asp:Label ID="SlutLabel" runat="server" Text="<%#: Item.Slutdatum %>"></asp:Label>
                     </td>
                     <td class="command">
-                        <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" CausesValidation="false"></asp:LinkButton>
+                        <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" OnClientClick='<%# String.Format("return confirm(\"Ta bort uthyrningen från: {0}?\")", Item.Startdatum) %>' CausesValidation="false"></asp:LinkButton>
                         <asp:LinkButton runat="server" CommandName="Edit" Text="Redigera" CausesValidation="false"></asp:LinkButton>
                     </td>
                 </tr>
