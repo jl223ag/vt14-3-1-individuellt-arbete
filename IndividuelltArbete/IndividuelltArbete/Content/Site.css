@@ -7,9 +7,62 @@
 #MainContent_HyperLink1:hover, #MainContent_HyperLink2:hover{
     background-color: gray;
 }
-
-
-
+#MainContent_ValidationSummary1, #MainContent_ValidationSummary2, #MainContent_ErrorText{
+    padding: 20px;
+    color: red;
+    background-color: pink;
+    border: 1px solid red;
+    display: block;
+}
+.red{
+    color: red;
+}
+#MainContent_RightMessage{
+    color: green;
+    background-color: lightgreen;
+    border: 1px solid green;
+    padding: 20px;
+    display: block;
+}
+#MainContent_HomeRightMessage{
+    color: blue;
+    background-color: lightblue;
+    border: 1px solid blue;
+    padding: 20px;
+    display: block;
+}
+h1{
+    margin-bottom: 20px;
+}
+#closeSaveMessage, #HomecloseSaveMessage {
+    width: 950px;
+    margin: -20px 0 0 -20px;
+    padding-right: 8px;
+    text-align: right;
+}
+#closeSaveMessage:hover{
+    outline: 1px solid green;
+    cursor: pointer;
+}
+#HomecloseSaveMessage:hover{
+    outline: 1px solid blue;
+    cursor: pointer;
+}
+#MainContent_KundNamn{
+    font-size: 1.5em;
+    border-bottom: 1px solid gray;
+    display: block;
+}
+table a{
+    font-size: 1.5em;
+    border: 1px solid gray;
+    background-color: #D3DCE0;
+    margin-bottom: 10px;
+    display: block;
+}
+td input{
+    width: 150px;
+}
 
 
 

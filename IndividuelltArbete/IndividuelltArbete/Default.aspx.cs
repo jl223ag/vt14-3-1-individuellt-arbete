@@ -25,7 +25,7 @@ namespace IndividuelltArbete
                     Messages.Text = "Sessionen har gått ut";
                 }
 
-                Messages.Visible = true;
+                HomeRightMessage.Visible = true;
             }
         }
 

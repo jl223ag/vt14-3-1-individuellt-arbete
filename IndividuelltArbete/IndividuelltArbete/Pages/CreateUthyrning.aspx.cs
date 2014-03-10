@@ -33,13 +33,14 @@ namespace IndividuelltArbete.Pages
             }
 
             var created = Request.QueryString["Created"];
-            if (created != null)
+            if (created != null && bool.Parse(created))
             {
-                CreatedText.Text = String.Format("Uthyrning tillagd den {0}", created);
-                CreatedText.Visible = true;
+                CreatedText.Text = "Ny uthyrning tillagd!";
+                RightMessage.Visible = true;
             }
 
-            GetKundByID();            
+            var kund = Service.GetKundById((int)Kundid); // hämta kundens för och efternamn och presentera i formuläret
+            KundNamn.Text = String.Format("Lägg till uthyrning för: {0} {1}", kund.Fnamn, kund.Enamn);
         }
 
         protected void SendButton_Click(object sender, EventArgs e)
@@ -61,11 +62,11 @@ namespace IndividuelltArbete.Pages
                     }
 
                     Service.SaveUthyrning(uthyrning);
-                    Response.Redirect(String.Format("~/Pages/CreateUthyrning.aspx?Created={0}", uthyrning.Startdatum)); // PRG med kundens namn i en querystring
+                    Response.Redirect("~/Pages/CreateUthyrning.aspx?Created=true"); // PRG
                 }
                 catch (Exception)
                 {
-                    Page.ModelState.AddModelError(String.Empty, "Något gick åt skogen vid sparning av kunden");
+                    Page.ModelState.AddModelError(String.Empty, "Något gick åt skogen vid sparning av uthyrning");
                 }
             }
         }
@@ -73,12 +74,6 @@ namespace IndividuelltArbete.Pages
         public IEnumerable<Film> FilmDDList_GetData()
         {
             return Service.GetFilmer();
-        }
-
-        protected void GetKundByID() // hämta kundens för och efternamn och presentera i formuläret
-        {
-            var kund = Service.GetKundById((int)Kundid);
-            KundNamn.Text = String.Format("Lägg till uthyrning för: {0} {1}", kund.Fnamn, kund.Enamn);
         }
     }
 }

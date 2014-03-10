@@ -13,7 +13,10 @@
     
     <h1>Videohuset startsida</h1>
 
-    <asp:Label ID="Messages" runat="server" Text="" Visible="false"></asp:Label>
+    <div id="HomeRightMessage" runat="server" visible="false">
+        <p id="HomecloseSaveMessage" onclick="remover()">X</p>
+        <asp:Label ID="Messages" runat="server" Text=""></asp:Label>
+    </div>
 
     <%-- List View--%>
     <asp:ListView ID="FirstPageListView" runat="server"

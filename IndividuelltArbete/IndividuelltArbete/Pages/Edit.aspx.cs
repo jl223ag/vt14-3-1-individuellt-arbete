@@ -61,7 +61,7 @@ namespace IndividuelltArbete.Pages
             {
                 edited = edited.Replace("%", " "); // för att undvika mellanslag mellan för och efternamn i urlen
                 SuccessText.Text = String.Format("{0} har uppdaterats", edited);
-                SuccessText.Visible = true;
+                RightMessage.Visible = true;
             }
         }
 
