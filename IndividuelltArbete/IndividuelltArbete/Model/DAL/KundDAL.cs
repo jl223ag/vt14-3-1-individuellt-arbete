@@ -9,18 +9,16 @@ namespace IndividuelltArbete.Model.DAL
 {
     public class KundDAL : DALBase
     {
-        public IEnumerable<Kund> GetKunder()
+        public IEnumerable<Kund> GetKunder() // hämta alla kunder
         {
             using (var con = CS())
             {
                 try
                 {
-                    var kunder = new List<Kund>(100);
+                    var kunder = new List<Kund>(100); // skapa en lista
 
-                    var cmd = new SqlCommand("AppSchema.usp_SelectAllKunder", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.Add("@Secret", SqlDbType.Int, 4).Value = 77; // ta bort denna senare
+                    var cmd = new SqlCommand("AppSchema.usp_SelectAllKunder", con); // ny instans av sqlcommand 
+                    cmd.CommandType = CommandType.StoredProcedure; // det är en lagrad procedur
 
                     con.Open();
 
@@ -33,7 +31,7 @@ namespace IndividuelltArbete.Model.DAL
                         var PostnrIndex = reader.GetOrdinal("Postnr");
                         var OrtIndex = reader.GetOrdinal("Ort");
 
-                        while (reader.Read())
+                        while (reader.Read()) // medans det finns poster att hämta
                         {
                             kunder.Add(new Kund
                             {
@@ -57,7 +55,7 @@ namespace IndividuelltArbete.Model.DAL
             }
         }
 
-        public Kund GetKundById(int kundid)
+        public Kund GetKundById(int kundid) // hämta specifik kund efter id
         {
             using (var con = CS())
             {
@@ -67,7 +65,7 @@ namespace IndividuelltArbete.Model.DAL
                     var cmd = new SqlCommand("AppSchema.usp_SelectKundById", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@Kundid", SqlDbType.Int, 4).Value = kundid;
+                    cmd.Parameters.Add("@Kundid", SqlDbType.Int, 4).Value = kundid; // kundid som parameter
 
                     con.Open();
 
@@ -94,7 +92,7 @@ namespace IndividuelltArbete.Model.DAL
                         }
                         else
                         {
-                            return null;
+                            return null; // om det inte fanns någon kund
                         }
                     }
                 }
@@ -105,7 +103,7 @@ namespace IndividuelltArbete.Model.DAL
             }
         }
 
-        public void InsertKund(Kund kund)
+        public void InsertKund(Kund kund) // lägg till ny kund
         {
             using (var con = CS())
             {
@@ -124,7 +122,7 @@ namespace IndividuelltArbete.Model.DAL
                     cmd.Parameters.Add("@Kundid", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
 
                     con.Open();
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery(); // exekverar sql-statementet
 
                     kund.Kundid = (int)cmd.Parameters["@Kundid"].Value;
                 }
@@ -135,7 +133,7 @@ namespace IndividuelltArbete.Model.DAL
             }
         }
 
-        public void UpdateKund(Kund kund)
+        public void UpdateKund(Kund kund) // uppdatera kund, annan lagrad procedur än insert och ingen outparameter
         {
             using (var con = CS())
             {
@@ -161,7 +159,7 @@ namespace IndividuelltArbete.Model.DAL
             }
         }
 
-        public void DeleteKund(int kundid)
+        public void DeleteKund(int kundid) // ta bort kund utifrån kundid
         {
             using (var con = CS())
             {

@@ -22,11 +22,9 @@ namespace IndividuelltArbete.Model
         [Required(ErrorMessage = "Ange filmid!")]
         public int Filmid { get; set; }
 
-        // GETDATE() i databasen om datum inte anges
-        public DateTime? Startdatum { get; set; }
+        public DateTime? Startdatum { get; set; } // GETDATE() i databasen om datum inte anges, nullable
 
-        // beräknas
-        public DateTime Slutdatum { get; set; }
+        public DateTime Slutdatum { get; set; } // beräknande fält
 
     
     }

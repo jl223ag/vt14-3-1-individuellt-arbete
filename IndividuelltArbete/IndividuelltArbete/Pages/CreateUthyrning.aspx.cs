@@ -33,7 +33,7 @@ namespace IndividuelltArbete.Pages
             }
 
             var created = Request.QueryString["Created"];
-            if (created != null && bool.Parse(created))
+            if (created != null && bool.Parse(created)) // om querystringen har värdet true
             {
                 CreatedText.Text = "Ny uthyrning tillagd!";
                 RightMessage.Visible = true;

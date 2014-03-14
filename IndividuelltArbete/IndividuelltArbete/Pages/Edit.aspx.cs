@@ -17,7 +17,7 @@ namespace IndividuelltArbete.Pages
             get { return _service ?? (_service = new Service()); }
         }
 
-        protected int? Kundid // sparar querystringvärdet i en sessionsvariabel
+        protected int? Kundid // sparar querystringvärdet från vald kund i en sessionsvariabel
         {
             get
             {
@@ -32,10 +32,10 @@ namespace IndividuelltArbete.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var id = Request.QueryString["Kundid"]; // hämtar querystrings
+            var id = Request.QueryString["Kundid"]; // hämtar querysträngar
             var edited = Request.QueryString["Edited"];
 
-            if (id != null) // en querystring för kundid finns
+            if (id != null) // om en querystring för kundid finns
             {
                 try
                 {
@@ -67,7 +67,8 @@ namespace IndividuelltArbete.Pages
 
         public Kund EditKunderListView_GetData()
         {
-            return Service.GetKundById((int)Kundid); // Hämtar kunden ur databasen
+            var m =  Service.GetKundById((int)Kundid); // Hämtar kunden ur databasen
+            return m;
         }
 
         public void EditKunderListView_DeleteItem(int kundid)
@@ -75,7 +76,7 @@ namespace IndividuelltArbete.Pages
             try
             {
                 Service.DeleteKund(kundid);
-                Response.Redirect("~/Default.aspx?Message=true");
+                Response.Redirect("~/Default.aspx?Message=true"); // redirecta till startsidan om en kund tagits bort
             }
             catch
             {
@@ -148,6 +149,8 @@ namespace IndividuelltArbete.Pages
         public void KundensUthyrningar_DeleteItem(int uthyrningsid)
         {
             Service.DeleteUthyrning(uthyrningsid);
+            SuccessText.Text = "Uthyrningstillfället har tagits bort!";
+            RightMessage.Visible = true;
         }
 
         //----------------- filmnamn och kategorier -------------------------------------------------------------

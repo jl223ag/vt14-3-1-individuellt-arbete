@@ -9,7 +9,7 @@ namespace IndividuelltArbete.Model.DAL
 {
     public class UthyrningDAL : DALBase
     {
-        public IEnumerable<Uthyrning> GetUthyrningarByKundid(int kundid)
+        public IEnumerable<Uthyrning> GetUthyrningarByKundid(int kundid) // hämta en kunds alla uthyrningstillfällen
         {
             using (var con = CS())
             {
@@ -61,7 +61,7 @@ namespace IndividuelltArbete.Model.DAL
         }
 
         
-        public Uthyrning GetUthyrningById(int uthyrningsid)
+        public Uthyrning GetUthyrningById(int uthyrningsid) // hämta ett uthyrningstillfälle med uthyrningsid
         {
             using (var con = CS())
             {
@@ -71,9 +71,7 @@ namespace IndividuelltArbete.Model.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@Uthyrningsid", SqlDbType.Int).Value = uthyrningsid;
-
-                    var uthyrningar = new List<Uthyrning>(10);
-
+                    
                     con.Open();
 
                     using (var reader = cmd.ExecuteReader())
@@ -112,7 +110,7 @@ namespace IndividuelltArbete.Model.DAL
             }
         }
 
-        public void InsertUthyrning(Uthyrning uthyrning)
+        public void InsertUthyrning(Uthyrning uthyrning) // lägg till ny uthyrning
         {
             using (var con = CS())
             {
@@ -141,7 +139,7 @@ namespace IndividuelltArbete.Model.DAL
             }
         }
 
-        public void UpdateUthyrning(Uthyrning uthyrning)
+        public void UpdateUthyrning(Uthyrning uthyrning) // uppdatera uthyrning
         {
             using (var con = CS())
             {
@@ -166,7 +164,7 @@ namespace IndividuelltArbete.Model.DAL
             }
         }
 
-        public void DeleteUthyrning(int uthyrningsid)
+        public void DeleteUthyrning(int uthyrningsid) // ta bort
         {
             using (var con = CS())
             {

@@ -85,10 +85,13 @@
         </div>
     </footer>
     </form>
+
+    <%-- Javascript för att ta bort rättmeddelanden --%>
+
     <script>
         function remover() {
             var close = document.querySelector(".close");
-            close.parentNode.removeChild(close);
+            close.style.display = "none";
         };
     </script>
 </body>

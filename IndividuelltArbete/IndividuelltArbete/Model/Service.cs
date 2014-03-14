@@ -10,6 +10,8 @@ namespace IndividuelltArbete.Model
     public class Service
     {
 
+        // --------------- strängar och egenskaper för att kommunicera med DAL ----------------------
+
         private KundDAL _kundDAL;
         private UthyrningDAL _uthyrningDAL;
         private FilmDAL _filmDAL;
@@ -48,17 +50,17 @@ namespace IndividuelltArbete.Model
         {
             ICollection<ValidationResult> validationResults;
 
-            if (!kund.Validate(out validationResults))
+            if (!kund.Validate(out validationResults)) // om den inte klarar valideringsmetoden
             {
                 var ex = new ValidationException("Det failade i valideringen!");
                 ex.Data.Add("ValidationResults", validationResults);
                 throw ex;
             }
-            if (kund.Kundid == 0)
+            if (kund.Kundid == 0) // om kundid är 0 ska en ny kund läggas till
             {
                 KundDAL.InsertKund(kund);
             }
-            else
+            else // annars är det en kund som ska uppdateras
             {
                 KundDAL.UpdateKund(kund);
             }
@@ -104,11 +106,11 @@ namespace IndividuelltArbete.Model
        
     //--------------- Filmer ----------------------------------
 
-        public IEnumerable<Film> GetFilmer(bool update = false)
+        public IEnumerable<Film> GetFilmer()
         {
-            var filmer = HttpContext.Current.Cache["Filmer"] as IEnumerable<Film>;
+            var filmer = HttpContext.Current.Cache["Filmer"] as IEnumerable<Film>; // typomvandla cachen till filmlista och lagra i en variabel
 
-            if (filmer == null || update)
+            if (filmer == null) // om listan är null hämta från databasen och cacha i 15min
             {
                 filmer = FilmDAL.GetFilmer();
                 HttpContext.Current.Cache.Insert("Filmer", filmer, null, DateTime.Now.AddMinutes(15), TimeSpan.Zero);

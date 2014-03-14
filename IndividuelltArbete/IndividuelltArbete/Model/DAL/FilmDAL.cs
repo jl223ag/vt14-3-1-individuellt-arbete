@@ -9,7 +9,7 @@ namespace IndividuelltArbete.Model.DAL
 {
     public class FilmDAL : DALBase
     {
-        public IEnumerable<Film> GetFilmer()
+        public IEnumerable<Film> GetFilmer() // hämtar ut alla olika filmer
         {
             using (var con = CS())
             {

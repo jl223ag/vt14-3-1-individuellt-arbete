@@ -9,7 +9,7 @@ namespace IndividuelltArbete.Model.DAL
 {
     public class DALBase
     {
-        private static string _connectionString;
+        private static string _connectionString; // statisk sträng innehållande connectionsträngen till databasen
 
         static DALBase()
         {
