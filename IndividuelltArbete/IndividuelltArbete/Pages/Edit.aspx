@@ -70,19 +70,19 @@
             
                 <tr>
                     <td>
-                        <asp:Label ID="FnamnLabel" runat="server" Text="<%#: Item.Fnamn %>"></asp:Label>
+                        <asp:Label ID="FnamnLabel" runat="server" Text="<%# Item.Fnamn %>"></asp:Label>
                     </td>
                     <td>
-                        <asp:Label ID="EnamnLabel" runat="server" Text="<%#: Item.Enamn %>"></asp:Label>
+                        <asp:Label ID="EnamnLabel" runat="server" Text="<%# Item.Enamn %>"></asp:Label>
                     </td>
                     <td>
-                        <asp:Label ID="AdressLabel" runat="server" Text="<%#: Item.Adress %>"></asp:Label>
+                        <asp:Label ID="AdressLabel" runat="server" Text="<%# Item.Adress %>"></asp:Label>
                     </td>
                     <td>
-                        <asp:Label ID="PostnrLabel" runat="server" Text="<%#: Item.Postnr %>"></asp:Label>
+                        <asp:Label ID="PostnrLabel" runat="server" Text="<%# Item.Postnr %>"></asp:Label>
                     </td>
                     <td>
-                        <asp:Label ID="OrtLabel" runat="server" Text="<%#: Item.Ort %>"></asp:Label>
+                        <asp:Label ID="OrtLabel" runat="server" Text="<%# Item.Ort %>"></asp:Label>
                     </td>
                     <td class="command">
                         <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort kund" OnClientClick='<%# String.Format("return confirm(\"Ta bort {0} {1}?\")", Item.Fnamn, Item.Enamn) %>' CausesValidation="false"></asp:LinkButton>
@@ -96,25 +96,25 @@
             <EditItemTemplate>
                 <tr>
                     <td>
-                        <asp:TextBox ID="FnamnBox" runat="server" Text="<%#: BindItem.Fnamn %>" MaxLength="30"></asp:TextBox>
+                        <asp:TextBox ID="FnamnBox" runat="server" Text="<%# BindItem.Fnamn %>" MaxLength="30"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="red" ErrorMessage="Förnamn får inte vara tom" ControlToValidate="FnamnBox" Display="Dynamic" Text="*" ValidationGroup="EditKunden"></asp:RequiredFieldValidator>
                     </td>
                     <td>
-                        <asp:TextBox ID="EnamnBox" runat="server" Text="<%#: BindItem.Enamn %>" MaxLength="30"></asp:TextBox>
+                        <asp:TextBox ID="EnamnBox" runat="server" Text="<%# BindItem.Enamn %>" MaxLength="30"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="red" ErrorMessage="Efternamn får inte vara tom" Display="Dynamic" Text="*" ControlToValidate="EnamnBox" ValidationGroup="EditKunden"></asp:RequiredFieldValidator>
                     </td>
                     <td>
-                        <asp:TextBox ID="AdressBox" runat="server" Text="<%#: BindItem.Adress %>" MaxLength="40"></asp:TextBox>
+                        <asp:TextBox ID="AdressBox" runat="server" Text="<%# BindItem.Adress %>" MaxLength="40"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" CssClass="red" ErrorMessage="Adress får inte vara tom" Display="Dynamic" Text="*" ControlToValidate="AdressBox" ValidationGroup="EditKunden"></asp:RequiredFieldValidator>
                     </td>
                     <td>
-                        <asp:TextBox ID="PostnrBox" runat="server" Text="<%#: BindItem.Postnr %>" MaxLength="5"></asp:TextBox>
+                        <asp:TextBox ID="PostnrBox" runat="server" Text="<%# BindItem.Postnr %>" MaxLength="5"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" CssClass="red" ErrorMessage="Postnummer får inte vara tom" Display="Dynamic" Text="*" ControlToValidate="PostnrBox" ValidationGroup="EditKunden"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Postnummret är i felaktigt format" ValidationExpression="^[0-9]{5}$" CssClass="red" Display="Dynamic" Text="*" ValidationGroup="EditKunden" ControlToValidate="PostnrBox"></asp:RegularExpressionValidator>
 
                     </td>
                     <td>
-                        <asp:TextBox ID="OrtBox" runat="server" Text="<%#: BindItem.Ort %>" MaxLength="30"></asp:TextBox>
+                        <asp:TextBox ID="OrtBox" runat="server" Text="<%# BindItem.Ort %>" MaxLength="30"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="red" ErrorMessage="Ort får inte vara tom" Display="Dynamic" Text="*" ControlToValidate="OrtBox" ValidationGroup="EditKunden"></asp:RequiredFieldValidator>
                     </td>
                     <td>
@@ -188,16 +188,16 @@
                         <asp:Label ID="KategoriLabel" runat="server" Text="" />
                     </td>                                           
                     <td>
-                        <asp:Label ID="PrisLabel" runat="server" Text="<%#: Item.Pris %>"></asp:Label>
+                        <asp:Label ID="PrisLabel" runat="server" Text="<%# Item.Pris %>"></asp:Label>
                     </td>
                     <td>
-                        <asp:Label ID="StartLabel" runat="server" Text="<%#: Item.Startdatum %>"></asp:Label>                   
+                        <asp:Label ID="StartLabel" runat="server" Text="<%# Item.Startdatum %>"></asp:Label>                   
                     </td>
                     <td>
-                        <asp:Label ID="DagarLabel" runat="server" Text="<%#: Item.Dagar %>"></asp:Label>
+                        <asp:Label ID="DagarLabel" runat="server" Text="<%# Item.Dagar %>"></asp:Label>
                     </td>
                     <td>
-                        <asp:Label ID="SlutLabel" runat="server" Text="<%#: Item.Slutdatum %>"></asp:Label>
+                        <asp:Label ID="SlutLabel" runat="server" Text="<%# Item.Slutdatum %>"></asp:Label>
                     </td>
                     <td class="command">
                         <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" OnClientClick='<%# String.Format("return confirm(\"Ta bort uthyrningen från: {0}?\")", Item.Startdatum) %>' CausesValidation="false"></asp:LinkButton>
@@ -223,21 +223,21 @@
                         Väljs automatiskt <%-- filmkategorin --%>
                     </td>
                     <td>
-                        <asp:TextBox ID="PrisBox" runat="server" Text="<%#: BindItem.Pris %>"></asp:TextBox>
+                        <asp:TextBox ID="PrisBox" runat="server" Text="<%# BindItem.Pris %>"></asp:TextBox>
                         <asp:RangeValidator ID="RangeValidator2" runat="server" CssClass="red" ErrorMessage="Pris är inte i rätt format eller för litet / stort" Display="Dynamic" Text="*" ValidationGroup="EditUthyrningen" ControlToValidate="PrisBox" Type="Currency" MinimumValue="0" MaximumValue="2000"></asp:RangeValidator>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" CssClass="red" runat="server" ErrorMessage="Pris får inte vara tom" Display="Dynamic" Text="*" ValidationGroup="EditUthyrningen" ControlToValidate="PrisBox"></asp:RequiredFieldValidator>
                     </td>
                     <td>
-                        <asp:TextBox ID="StartBox" runat="server" Text="<%#: BindItem.Startdatum %>"></asp:TextBox>
+                        <asp:TextBox ID="StartBox" runat="server" Text="<%# BindItem.Startdatum %>"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" CssClass="red" runat="server" ErrorMessage="Startdatum är i fel format" Display="Dynamic" Text="*" ValidationGroup="EditUthyrningen" ControlToValidate="StartBox" ValidationExpression="^\d{4}[-]{1}\d{2}[-]{1}\d{2}\s{1}\d{2}[:]{1}\d{2}[:]{1}\d{2}$"></asp:RegularExpressionValidator>
                     </td>
                     <td>
-                        <asp:TextBox ID="DagarBox" runat="server" Text="<%#: BindItem.Dagar %>"></asp:TextBox>
+                        <asp:TextBox ID="DagarBox" runat="server" Text="<%# BindItem.Dagar %>"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" CssClass="red" runat="server" ErrorMessage="Antal dagar får inte vara tom" Display="Dynamic" Text="*" ValidationGroup="EditUthyrningen" ControlToValidate="DagarBox"></asp:RequiredFieldValidator>
                         <asp:RangeValidator ID="RangeValidator1" runat="server" CssClass="red" ErrorMessage="Fältet dagar är inte i rätt format" Type="Integer" MinimumValue="1" MaximumValue="256" Display="Dynamic" ValidationGroup="EditUthyrningen" Text="*" ControlToValidate="DagarBox"></asp:RangeValidator>
                     </td>
                     <td>
-                        <asp:Label ID="SlutBox" runat="server" Text="<%#: Item.Slutdatum %>"></asp:Label> <%-- Går inte att påverka --%>
+                        <asp:Label ID="SlutBox" runat="server" Text="<%# Item.Slutdatum %>"></asp:Label> <%-- Går inte att påverka --%>
                     </td>
                     <td>
                         <asp:LinkButton runat="server" CommandName="Update" Text="Spara" ValidationGroup="EditUthyrningen"></asp:LinkButton>

@@ -67,8 +67,7 @@ namespace IndividuelltArbete.Pages
 
         public Kund EditKunderListView_GetData()
         {
-            var m =  Service.GetKundById((int)Kundid); // Hämtar kunden ur databasen
-            return m;
+            return Service.GetKundById((int)Kundid); // Hämtar kunden ur databasen
         }
 
         public void EditKunderListView_DeleteItem(int kundid)
