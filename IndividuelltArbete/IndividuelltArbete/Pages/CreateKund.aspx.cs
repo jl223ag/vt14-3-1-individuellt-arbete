@@ -21,7 +21,7 @@ namespace IndividuelltArbete.Pages
         {
             var created = Request.QueryString["Created"];
 
-            if (created != null) // om det finns en querystring
+            if (!String.IsNullOrWhiteSpace(created)) // om det finns en querystring
             {
                 created = created.Replace("%", " "); // snabbvariant av url decoding för att ta bort mellanslag
                 CreatedText.Text = String.Format("Kunden {0} har sparats!", created);

@@ -35,7 +35,7 @@ namespace IndividuelltArbete.Pages
             var id = Request.QueryString["Kundid"]; // hämtar querysträngar
             var edited = Request.QueryString["Edited"];
 
-            if (id != null) // om en querystring för kundid finns
+            if (!String.IsNullOrWhiteSpace(id)) // om en querystring för kundid finns
             {
                 try
                 {
@@ -51,13 +51,13 @@ namespace IndividuelltArbete.Pages
             }
             else // om det inte finns en querystring för kundid
             {
-                if (Session["VilkenKund"] == null) //.. och sessionen är null så har den löpt ut
+                if (Session["VilkenKund"] == null) //.. och sessionen är null så har den löpt ut, gå tillbaka till startsidan
                 {
                     Response.Redirect(String.Format("~/Default.aspx?Message=false"));
                 }
             }
 
-            if (edited != null) // om något har redigerats
+            if (!String.IsNullOrWhiteSpace(edited)) // om något har redigerats
             {
                 edited = edited.Replace("%", " "); // för att undvika mellanslag mellan för och efternamn i urlen
                 SuccessText.Text = String.Format("{0} har uppdaterats", edited);
@@ -83,7 +83,7 @@ namespace IndividuelltArbete.Pages
             }
         }
 
-        public void EditKunderListView_UpdateItem(int kundid) // denna kan förbättras som fan med querystringen istället.. gör senare
+        public void EditKunderListView_UpdateItem(int kundid)
         {
             if (Page.ModelState.IsValid)
             {

@@ -27,13 +27,13 @@ namespace IndividuelltArbete.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {            
-            if (Session["VilkenKund"] == null) // om sessionen har löpt ut
+            if (Session["VilkenKund"] == null) // om sessionen har löpt ut gå tillbaka till startsidan
             {
                 Response.Redirect("~/Default.aspx?Message=false");
             }
 
             var created = Request.QueryString["Created"];
-            if (created != null && bool.Parse(created)) // om querystringen har värdet true
+            if (!String.IsNullOrWhiteSpace(created) && bool.Parse(created)) // om querystringen har värdet true
             {
                 CreatedText.Text = "Ny uthyrning tillagd!";
                 RightMessage.Visible = true;
@@ -56,7 +56,7 @@ namespace IndividuelltArbete.Pages
                     uthyrning.Dagar = Byte.Parse(DagarBox.Text);
                     uthyrning.Kundid = (int)Kundid;
 
-                    if (!String.IsNullOrEmpty(StartdatumBox.Text)) // denna är frivillig, om lämnad tom körs GETDATE() i lagrade proceduren
+                    if (!String.IsNullOrWhiteSpace(StartdatumBox.Text)) // denna är frivillig, om lämnad tom körs GETDATE() i lagrade proceduren
                     {
                         uthyrning.Startdatum = DateTime.Parse(StartdatumBox.Text);
                     }
