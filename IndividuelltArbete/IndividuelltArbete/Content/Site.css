@@ -7,7 +7,7 @@
 #MainContent_HyperLink1:hover, #MainContent_HyperLink2:hover{
     background-color: gray;
 }
-#MainContent_ValidationSummary1, #MainContent_ValidationSummary2, #MainContent_ErrorText{
+#MainContent_ValidationSummary1, #MainContent_ValidationSummary2, #MainContent_ErrorText, #ErrorCode{
     padding: 20px;
     color: red;
     background-color: pink;
